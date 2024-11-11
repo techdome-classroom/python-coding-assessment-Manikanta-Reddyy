@@ -4,7 +4,7 @@ def decode_message(s: str, p: str) -> bool:
     
     dp = [[False] * (n + 1) for _ in range(m + 1)]
     
-   
+ 
     dp[0][0] = True
     
     
@@ -12,7 +12,7 @@ def decode_message(s: str, p: str) -> bool:
         if p[j - 1] == '*':
             dp[0][j] = dp[0][j - 1]
 
-    
+  
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             if p[j - 1] == s[i - 1] or p[j - 1] == '?':
@@ -22,3 +22,9 @@ def decode_message(s: str, p: str) -> bool:
 
     return dp[m][n]
 
+# Example usage
+print(decode_message("aa", "a"))      # False
+print(decode_message("aa", "*"))      # True
+print(decode_message("cb", "?a"))     # False
+print(decode_message("adceb", "*a*b"))  # True
+print(decode_message("acdcb", "a*c?b"))  # False
